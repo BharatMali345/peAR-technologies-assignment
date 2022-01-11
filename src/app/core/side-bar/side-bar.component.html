@@ -1,0 +1,52 @@
+<div class="side__bar">
+  <h1 class="side__bar--logo">zomato</h1>
+  <div class="side__bar--body">
+    <!-- Logo -->
+    <div class="side__bar--body-logo-cnt">
+      <img [src]="Data?.restaurant_image" class="logo" alt="Data?.Name" />
+    </div>
+
+    <!-- Restaurant Data -->
+    <h5 class="restaurant__name mt-1">{{ Data?.Name }}</h5>
+    <p class="restaurant__add sub-text">
+      <span class="material-icons icon">home</span
+      >{{ Data?.restaurant_address }}.
+    </p>
+    <p class="restaurant__loc sub-text">
+      <span class="material-icons icon">location_on</span>{{ Data?.Location }} ,
+      {{ Data?.city }}.
+    </p>
+    <p class="restaurant__loc sub-text">
+      <span class="material-icons icon">local_dining</span>{{ Data?.Cuisines }}
+    </p>
+    <p class="restaurant__loc sub-text">
+      <span class="material-icons icon">phone</span
+      ><a href="tel:+9233454566">9233454566</a>
+    </p>
+
+    <!-- Navigation Links -->
+    <ul class="side__bar--body-nav">
+      <li
+        class="side__bar--body-nav-links"
+        routerLinkActive="active"
+        routerLink="/restaurant-view/menu"
+      >
+        <span class="material-icons icon">menu_book</span>Delivery Menu
+      </li>
+      <li
+        class="side__bar--body-nav-links"
+        routerLinkActive="active"
+        routerLink="/restaurant-view/meal"
+      >
+        <span class="material-icons icon">restaurant</span>Meal For One
+      </li>
+      <li
+        class="side__bar--body-nav-links"
+        routerLinkActive="active"
+        routerLink="/restaurant-view/help"
+      >
+        <span class="material-icons icon">help</span>Help
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ViewLayoutComponent } from './core/layout/view-layout/view-layout.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'restaurant-view',
+    component: ViewLayoutComponent,
     loadChildren: () =>
       import('./modules/restaurant-view/restaurant-view.module').then(
         (m) => m.RestaurantViewModule
