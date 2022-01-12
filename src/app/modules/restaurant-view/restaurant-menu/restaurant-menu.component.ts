@@ -43,7 +43,7 @@ export class RestaurantMenuComponent implements OnInit {
     } else {
       this.isCustomizable = false;
       this.restaurantService.cart.push(data);
-      this.restaurantService.notify(`${data.Name} added to cart!`);
+      this.restaurantService.notify(`${data.Name} added to order!`);
       console.log('Add to cart!');
     }
   }
@@ -51,7 +51,7 @@ export class RestaurantMenuComponent implements OnInit {
   btnClick(event: string) {
     this.restaurantService.cart.push(this.customizationData);
     this.restaurantService.notify(
-      `${this.customizationData.Name} added to cart!`
+      `${this.customizationData.Name} added to order!`
     );
 
     this.isCustomizable = false;

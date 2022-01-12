@@ -30,11 +30,11 @@ import { FormsModule } from '@angular/forms';
         component: RestaurantMenuComponent,
       },
       {
-        path: 'cart',
+        path: 'order',
         component: RestaurantMealComponent,
       },
       {
-        path: 'help',
+        path: 'who-we-are',
         component: RestaurantHelpComponent,
       },
     ]),

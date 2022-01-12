@@ -5,7 +5,7 @@ import { ViewLayoutComponent } from './core/layout/view-layout/view-layout.compo
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/restaurant-view',
+    redirectTo: '/restaurant-view/menu',
     pathMatch: 'full',
   },
   {

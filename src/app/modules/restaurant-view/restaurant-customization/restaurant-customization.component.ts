@@ -30,7 +30,7 @@ export class RestaurantCustomizationComponent implements OnInit {
     });
     if (item) {
       this.restaurantService.cart.push(item);
-      this.restaurantService.notify(`${item.Name} added to cart!`);
+      this.restaurantService.notify(`${item.Name} added to order!`);
       this.onBtnClicked.emit('customized');
     }
   }

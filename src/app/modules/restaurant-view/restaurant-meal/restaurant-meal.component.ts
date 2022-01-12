@@ -30,7 +30,7 @@ export class RestaurantMealComponent implements OnInit {
       (cartItem: any) => cartItem.Name != item.Name
     );
     this.cartData = this.restaurantService.cart;
-    this.restaurantService.notify(`${item.Name} removed from cart!`);
+    this.restaurantService.notify(`${item.Name} removed from order!`);
   }
 
   checkout() {

@@ -1,0 +1,25 @@
+.help__view {
+  width: 100%;
+  overflow-y: auto;
+  height: calc(100vh - 62px);
+  padding: 20px;
+  .header {
+    padding-bottom: 10px;
+  }
+}
+
+.img__cnt {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: solid 1px #e0e0e0;
+  .img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .search__bar {
+    display: none;
+  }
+}
