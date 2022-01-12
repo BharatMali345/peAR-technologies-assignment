@@ -1,0 +1,48 @@
+.customize {
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding: 20px;
+  overflow-y: auto;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__body {
+    width: 100%;
+    height: calc(100% - 70px);
+
+    .desc {
+      color: grey;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__footer {
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 991px) {
+  .customize {
+    height: calc(100vh - 120px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .customize {
+    height: auto;
+    &__body {
+      height: auto;
+    }
+  }
+}

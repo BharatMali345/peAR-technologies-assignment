@@ -10,17 +10,11 @@ export class ViewLayoutComponent implements OnInit {
   //Variables
   restaurantData: any;
   loading: boolean = false;
-  searchValue: string = '';
 
   constructor(private restaurantService: RestaurantService) {}
 
   ngOnInit(): void {
     this.getRestaurantDetails();
-  }
-
-  //Search Function
-  searchBy(event: any) {
-    console.log(event);
   }
 
   //API Calls

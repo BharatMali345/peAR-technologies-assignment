@@ -1,29 +1,9 @@
 <div class="restaurant__view">
   <div class="row">
-    <div class="col-sm-2 no-padding">
+    <div class="col-lg-2 no-padding">
       <side-bar [Data]="restaurantData"></side-bar>
     </div>
-    <div class="col-sm-10">
-      <div class="search__bar">
-        <mat-form-field floatLabel="never">
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="searchValue"
-            placeholder="Search "
-            (ngModelChange)="searchBy($event)"
-          />
-          <button
-            *ngIf="searchValue"
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            (click)="searchValue = ''"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
+    <div class="col-lg-10">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -1,17 +1,94 @@
-<div class="row">
-  <div class="col-md-5">
-    <h5 class="menu__header">Delivery Menu</h5>
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Self aware panel </mat-panel-title>
-          <!-- <mat-panel-description>
-            Currently I am {{ panelOpenState ? "open" : "closed" }}
-          </mat-panel-description> -->
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
+<div class="search__bar">
+  <mat-form-field floatLabel="never">
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchValue"
+      placeholder="Search "
+      (ngModelChange)="searchBy($event)"
+    />
+    <button
+      *ngIf="searchValue"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="searchValue = ''; searchBy()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div class="row scroll" *ngIf="categoryItems.length > 0">
+  <div ngClass="{{ isCustomizable ? 'col-md-6' : 'col-md-12' }}">
+    <div class="menu" id="menu" #menu>
+      <div class="menu__header">
+        <h5 class="title">Delivery Menu</h5>
+      </div>
+      <mat-accordion>
+        <!-- Category -->
+        <ng-container *ngFor="let categoryItem of categoryItems">
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ categoryItem?.Category_name }}
+              </mat-panel-title>
+              <!-- <mat-panel-description>
+              Currently I am {{ panelOpenState ? "open" : "closed" }}
+            </mat-panel-description> -->
+            </mat-expansion-panel-header>
+
+            <!-- Category Items -->
+            <ng-container *ngFor="let item of categoryItem?.Items">
+              <div class="item__card">
+                <div class="item__card--image">
+                  <img
+                    [src]="item?.item_image"
+                    [alt]="item?.Name"
+                    class="image"
+                  />
+                </div>
+                <div class="item__card--body">
+                  <div class="item__card--body-desc">
+                    <div class="title">{{ item?.Name }}</div>
+                    <div class="price">&#8377; {{ item?.Price }}</div>
+                    <div class="description">{{ item?.Description }}</div>
+                  </div>
+                  <div class="item__card--body-btn">
+                    <button
+                      mat-stroked-button
+                      color="primary"
+                      class="button"
+                      (click)="addToCart(item)"
+                    >
+                      Add
+                    </button>
+                    <p
+                      class="customizable"
+                      *ngIf="item?.Customisation.length > 0"
+                    >
+                      Customizable
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!-- Category Items -->
+          </mat-expansion-panel>
+        </ng-container>
+        <!-- Category -->
+      </mat-accordion>
+    </div>
   </div>
-  <div class="col-md-5"></div>
+  <div class="col-md-6" *ngIf="isCustomizable">
+    <restaurant-customization
+      [Data]="customizationData"
+      (onBtnClicked)="btnClick($event)"
+    ></restaurant-customization>
+  </div>
+</div>
+<div *ngIf="categoryItems.length < 1" class="no-data">
+  <h4>No Data Found</h4>
 </div>

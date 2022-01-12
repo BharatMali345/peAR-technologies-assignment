@@ -1,0 +1,146 @@
+.menu {
+  width: 100%;
+  overflow-y: auto;
+  height: calc(100vh - 62px);
+  padding: 20px;
+  &__header {
+    padding-bottom: 10px;
+  }
+}
+
+.item__card {
+  height: 90px;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &--image {
+    width: 90px;
+    height: 90px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+    .image {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &--body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 90px);
+    height: 100%;
+    &-desc {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 12px;
+        color: grey;
+      }
+    }
+
+    &-btn {
+      width: 60px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: start;
+
+      .button {
+        width: 60px;
+        height: 33px;
+      }
+
+      .customizable {
+        font-size: 10px;
+        color: grey;
+      }
+    }
+  }
+}
+
+mat-form-field {
+  width: 45%;
+  min-width: 150px;
+  margin-bottom: 0px;
+  height: 30px !important;
+}
+
+:host ::ng-deep {
+  .search__bar {
+    .mat-label {
+      color: #666666;
+    }
+    .mat-form-field-wrapper {
+      border: solid 1.5px #c2c2c2 !important;
+      padding-bottom: 0px !important;
+      border-radius: 4px !important;
+      margin: 1px;
+      z-index: 2;
+    }
+
+    .mat-form-field-label {
+      left: 10px !important;
+      margin-top: 0px;
+      color: #666666 !important;
+    }
+
+    .mat-form-field-underline {
+      display: none !important;
+    }
+
+    .mat-input-element {
+      height: 20px;
+    }
+
+    .mat-form-field-wrapper:focus-within {
+      border: solid 1.5px #d50000 !important;
+    }
+
+    .mat-form-field-flex {
+      background-color: white;
+      border-radius: 4px !important;
+    }
+
+    .mat-form-field-infix {
+      padding-left: 10px !important;
+      padding: 4px 0px;
+      border: 0px;
+    }
+    .mat-form-field-suffix {
+      padding-right: 4px !important;
+      top: -1px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .menu {
+    height: calc(100vh - 120px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .scroll {
+    width: 100%;
+    height: calc(100vh - 120px);
+    overflow: auto;
+  }
+  .menu {
+    height: auto;
+  }
+}

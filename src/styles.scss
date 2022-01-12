@@ -2,6 +2,25 @@
 :root {
   --primary-color: #d50000;
 }
+
+* {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+  }
+}
 html,
 body {
   height: 100%;
@@ -21,4 +40,34 @@ body {
 .row > * {
   padding-left: 0px !important;
   padding-right: 0px !important;
+}
+
+.icon {
+  font-size: 13px;
+  margin-right: 5px;
+  padding-bottom: -5px;
+}
+
+.search__bar {
+  width: 100%;
+  height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.no-data {
+  height: calc(100vh - 60px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Change Snackbar action color to theme color
+.mat-simple-snackbar-action {
+  color: var(--primary-color) !important;
 }

@@ -1,1 +1,45 @@
-<p>restaurant-meal works!</p>
+<div class="search__bar"></div>
+
+<div class="cart__view" *ngIf="cartData.length > 0">
+  <h5 class="header">Cart Items</h5>
+  <!-- Category Items -->
+  <ng-container *ngFor="let item of cartData">
+    <div class="item__card">
+      <div class="item__card--image">
+        <img [src]="item?.item_image" [alt]="item?.Name" class="image" />
+      </div>
+      <div class="item__card--body">
+        <div class="item__card--body-desc">
+          <div class="title">{{ item?.Name }}</div>
+          <div class="price">&#8377; {{ item?.Price }}</div>
+          <div class="description">{{ item?.Description }}</div>
+        </div>
+        <div class="item__card--body-btn">
+          <mat-icon
+            color="primary"
+            (click)="delete(item)"
+            style="cursor: pointer"
+            >delete</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <button
+    style="width: 100%"
+    mat-raised-button
+    color="primary"
+    class="button"
+    (click)="checkout()"
+    routerLink="/restaurant-view/menu"
+    *ngIf="cartData.length > 0"
+  >
+    Proceed to pay (&#8377; {{ totalValue }})
+  </button>
+</div>
+<div class="no-data" *ngIf="cartData.length < 1">
+  <h4>No Items to Order</h4>
+  <button mat-flat-button color="primary" routerLink="/restaurant-view/menu">
+    Add Items!
+  </button>
+</div>

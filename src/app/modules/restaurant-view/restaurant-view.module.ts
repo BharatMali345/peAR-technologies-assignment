@@ -5,16 +5,20 @@ import { RouterModule } from '@angular/router';
 import { RestaurantMenuComponent } from './restaurant-menu/restaurant-menu.component';
 import { RestaurantMealComponent } from './restaurant-meal/restaurant-meal.component';
 import { RestaurantHelpComponent } from './restaurant-help/restaurant-help.component';
+import { RestaurantCustomizationComponent } from './restaurant-customization/restaurant-customization.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     RestaurantMenuComponent,
     RestaurantMealComponent,
     RestaurantHelpComponent,
+    RestaurantCustomizationComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     RouterModule.forChild([
       {
         path: '',
@@ -26,7 +30,7 @@ import { RestaurantHelpComponent } from './restaurant-help/restaurant-help.compo
         component: RestaurantMenuComponent,
       },
       {
-        path: 'meal',
+        path: 'cart',
         component: RestaurantMealComponent,
       },
       {

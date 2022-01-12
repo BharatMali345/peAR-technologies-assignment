@@ -1,0 +1,31 @@
+<div class="customize">
+  <h5 class="customize__title">Customize your {{ Data?.Name }}</h5>
+  <div class="customize__body">
+    <p class="desc">{{ Data?.Description }}</p>
+    <p>&#8377; {{ Data?.Price }}</p>
+    <br />
+    <h6>Pick your favorite {{ Data?.Customisation[0]?.Name }}</h6>
+    <mat-radio-group [(ngModel)]="selectedOption">
+      <mat-radio-button
+        color="primary"
+        class="radio-group"
+        *ngFor="let item of Data?.Customisation[0]?.Options"
+        [value]="item"
+      >
+        {{ item?.Name }}
+        &#8377;{{ item?.Price }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="customize__footer">
+    <button
+      class="btn"
+      mat-raised-button
+      color="primary"
+      (click)="addToCart()"
+      [disabled]="!selectedOption"
+    >
+      Add to cart!
+    </button>
+  </div>
+</div>

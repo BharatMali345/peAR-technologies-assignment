@@ -9,6 +9,9 @@ export class SideBarComponent implements OnInit {
   //Inputs
   @Input() Data: any;
 
+  //Variables
+  openSidebar: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}

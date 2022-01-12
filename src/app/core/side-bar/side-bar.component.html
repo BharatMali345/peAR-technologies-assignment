@@ -1,5 +1,19 @@
-<div class="side__bar">
-  <h1 class="side__bar--logo">zomato</h1>
+<div class="side__bar" ngClass="{{ openSidebar ? 'open-hamburger' : '' }}">
+  <h1 class="side__bar--logo">
+    zomato
+    <mat-icon
+      class="hamburger"
+      (click)="openSidebar = true"
+      *ngIf="!openSidebar"
+      >menu</mat-icon
+    >
+    <mat-icon
+      class="hamburger"
+      (click)="openSidebar = false"
+      *ngIf="openSidebar"
+      >close</mat-icon
+    >
+  </h1>
   <div class="side__bar--body">
     <!-- Logo -->
     <div class="side__bar--body-logo-cnt">
@@ -30,20 +44,23 @@
         class="side__bar--body-nav-links"
         routerLinkActive="active"
         routerLink="/restaurant-view/menu"
+        (click)="openSidebar = false"
       >
         <span class="material-icons icon">menu_book</span>Delivery Menu
       </li>
       <li
         class="side__bar--body-nav-links"
         routerLinkActive="active"
-        routerLink="/restaurant-view/meal"
+        routerLink="/restaurant-view/cart"
+        (click)="openSidebar = false"
       >
-        <span class="material-icons icon">restaurant</span>Meal For One
+        <span class="material-icons icon">shopping_bag</span>Cart
       </li>
       <li
         class="side__bar--body-nav-links"
         routerLinkActive="active"
         routerLink="/restaurant-view/help"
+        (click)="openSidebar = false"
       >
         <span class="material-icons icon">help</span>Help
       </li>
