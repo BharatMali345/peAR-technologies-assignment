@@ -1,0 +1,259 @@
+<div class="edit" *ngIf="!loading">
+  <form [formGroup]="editForm">
+    <h5 class="edit__title">Edit {{ editModel?.Name }}</h5>
+    <div class="customize__body">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="Description"></textarea>
+      </mat-form-field>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field>
+            <mat-label>Actual Price</mat-label>
+            <input type="number" matInput formControlName="AcPrice" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input type="number" matInput formControlName="Price" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field>
+            <mat-label>GST</mat-label>
+            <input type="number" matInput formControlName="gst" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="AR" color="primary">AR</mat-checkbox>
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Live" color="primary"
+            >Live</mat-checkbox
+          >
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Best_seller" color="primary"
+            >Best Seller</mat-checkbox
+          >
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Chefs_special" color="primary"
+            >Chefs Special</mat-checkbox
+          >
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Gluten_free" color="primary"
+            >Gluten Free</mat-checkbox
+          >
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Seasonal" color="primary"
+            >Seasonal</mat-checkbox
+          >
+        </div>
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="Vegan" color="primary"
+            >Vegan</mat-checkbox
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field>
+            <mat-label>Android Model</mat-label>
+            <input matInput formControlName="model_android" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field>
+            <mat-label>IOS Model</mat-label>
+            <input matInput formControlName="model_ios" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field>
+            <mat-label>Item Image</mat-label>
+            <input matInput formControlName="item_image" />
+          </mat-form-field>
+          <img
+            style="height: 100px; margin-bottom: 10px"
+            [src]="Data?.item_image"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>Item Type</mat-label>
+            <input type="number" matInput formControlName="item_type" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>Rating(0-5)</mat-label>
+            <input
+              min="0"
+              max="5"
+              type="number"
+              matInput
+              formControlName="rating"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>Serving Time (In Mins)</mat-label>
+            <input type="number" matInput formControlName="serving_time" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>VAT</mat-label>
+            <input type="number" matInput formControlName="vat" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Customisation -->
+
+      <div class="form-array-label">
+        <h6>Customisation</h6>
+        <button mat-stroked-button color="primary" (click)="addCustomisation()">
+          Add Customisation
+        </button>
+      </div>
+      <ng-container
+        *ngIf="editForm.get('Customisation')['controls'].length > 0"
+      >
+        <div formArrayName="Customisation">
+          <div *ngFor="let item of Customisation()['controls']; let i = index">
+            <div [formGroupName]="i" style="width: 100%">
+              <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="Name" />
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                  <mat-form-field>
+                    <mat-label>Min</mat-label>
+                    <input matInput formControlName="min" type="number" />
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                  <mat-form-field>
+                    <mat-label>Max</mat-label>
+                    <input matInput formControlName="max" type="number" />
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-10">
+                  <mat-checkbox formControlName="Live" color="primary"
+                    >Live</mat-checkbox
+                  >
+                </div>
+                <div class="col-sm-2">
+                  <mat-icon
+                    style="cursor: pointer"
+                    color="primary"
+                    (click)="removeCustomisation(i)"
+                  >
+                    delete
+                  </mat-icon>
+                </div>
+              </div>
+            </div>
+
+            <!-- Options -->
+            <div class="form-array-label">
+              <h6>Options</h6>
+              <button
+                mat-stroked-button
+                color="primary"
+                (click)="addOptions(i)"
+              >
+                Add Options
+              </button>
+            </div>
+            <ng-container *ngIf="Options(i)['controls'].length > 0">
+              <div formArrayName="Options">
+                <div *ngFor="let opt of Options(i)['controls']; let j = index">
+                  <!-- {{ Options(i).value | json }}
+                  {{ Options(i)["controls"].length }} -->
+                  <div [formGroupName]="j" style="width: 100%">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Name</mat-label>
+                          <input matInput formControlName="Name" />
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Price</mat-label>
+                          <input
+                            matInput
+                            formControlName="Price"
+                            type="number"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Option Type</mat-label>
+                          <input
+                            matInput
+                            formControlName="option_type"
+                            type="number"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-10">
+                        <mat-checkbox formControlName="Live" color="primary"
+                          >Live</mat-checkbox
+                        >
+                      </div>
+                      <div class="col-sm-2">
+                        <mat-icon
+                          style="cursor: pointer"
+                          color="primary"
+                          (click)="removeOptions(i, j)"
+                        >
+                          delete
+                        </mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="edit__footer">
+      <button
+        class="btn"
+        mat-raised-button
+        color="primary"
+        (click)="submit()"
+        [disabled]="editForm.invalid"
+      >
+        Submit!
+      </button>
+    </div>
+  </form>
+</div>
+<div class="loading" *ngIf="loading">
+  <mat-spinner color="primary"></mat-spinner>
+</div>

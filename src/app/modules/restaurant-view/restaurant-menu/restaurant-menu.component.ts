@@ -15,6 +15,11 @@ export class RestaurantMenuComponent implements OnInit {
   customizationData: any;
   searchValue: string = '';
   resetCategoryItems: any;
+  pageComponentVisibility = {
+    customize: false,
+    edit: false,
+  };
+  editingData: any;
 
   constructor(private restaurantService: RestaurantService) {}
 
@@ -37,9 +42,11 @@ export class RestaurantMenuComponent implements OnInit {
   }
 
   addToCart(data: any) {
+    this.closeAllComponents();
     if (data.Customisation.length > 0) {
       this.isCustomizable = true;
       this.customizationData = data;
+      this.pageComponentVisibility.customize = true;
     } else {
       this.isCustomizable = false;
       this.restaurantService.cart.push(data);
@@ -48,13 +55,30 @@ export class RestaurantMenuComponent implements OnInit {
     }
   }
 
+  edit(data: any) {
+    this.closeAllComponents();
+    this.isCustomizable = true;
+    this.pageComponentVisibility.edit = true;
+    this.editingData = data;
+  }
+
   btnClick(event: string) {
-    this.restaurantService.cart.push(this.customizationData);
-    this.restaurantService.notify(
-      `${this.customizationData.Name} added to order!`
-    );
+    this.closeAllComponents();
+    if (event == 'customize') {
+      this.restaurantService.notify(`Edited Successfully!`);
+    } else {
+      this.restaurantService.cart.push(this.customizationData);
+      this.restaurantService.notify(
+        `${this.customizationData.Name} added to order!`
+      );
+    }
 
     this.isCustomizable = false;
+  }
+
+  closeAllComponents() {
+    this.pageComponentVisibility.edit = false;
+    this.pageComponentVisibility.customize = false;
   }
 
   //API Calls

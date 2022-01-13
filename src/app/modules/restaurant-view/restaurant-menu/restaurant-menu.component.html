@@ -57,6 +57,12 @@
                     <div class="description">{{ item?.Description }}</div>
                   </div>
                   <div class="item__card--body-btn">
+                    <p
+                      class="customizable"
+                      *ngIf="item?.Customisation.length > 0"
+                    >
+                      Customizable
+                    </p>
                     <button
                       mat-stroked-button
                       color="primary"
@@ -65,12 +71,15 @@
                     >
                       Add
                     </button>
-                    <p
-                      class="customizable"
-                      *ngIf="item?.Customisation.length > 0"
+
+                    <button
+                      mat-stroked-button
+                      color="primary"
+                      class="button"
+                      (click)="edit(item)"
                     >
-                      Customizable
-                    </p>
+                      Edit
+                    </button>
                   </div>
                 </div>
               </div>
@@ -84,9 +93,16 @@
   </div>
   <div class="col-md-6" *ngIf="isCustomizable">
     <restaurant-customization
+      *ngIf="pageComponentVisibility.customize"
       [Data]="customizationData"
       (onBtnClicked)="btnClick($event)"
     ></restaurant-customization>
+    <edit-food-item
+      *ngIf="pageComponentVisibility.edit"
+      (onBtnClicked)="btnClick($event)"
+      [Data]="editingData"
+    >
+    </edit-food-item>
   </div>
 </div>
 <div *ngIf="categoryItems.length < 1" class="no-data">

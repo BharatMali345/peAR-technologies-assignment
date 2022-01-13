@@ -6,7 +6,8 @@ import { RestaurantMenuComponent } from './restaurant-menu/restaurant-menu.compo
 import { RestaurantMealComponent } from './restaurant-meal/restaurant-meal.component';
 import { RestaurantHelpComponent } from './restaurant-help/restaurant-help.component';
 import { RestaurantCustomizationComponent } from './restaurant-customization/restaurant-customization.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditFoodItemComponent } from './edit-food-item/edit-food-item.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,13 @@ import { FormsModule } from '@angular/forms';
     RestaurantMealComponent,
     RestaurantHelpComponent,
     RestaurantCustomizationComponent,
+    EditFoodItemComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

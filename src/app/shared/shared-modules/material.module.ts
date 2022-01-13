@@ -7,6 +7,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MaterialComponents = [
   MatInputModule,
@@ -16,6 +18,8 @@ const MaterialComponents = [
   MatRadioModule,
   MatFormFieldModule,
   MatSnackBarModule,
+  MatCheckboxModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
